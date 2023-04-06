@@ -11,7 +11,13 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "styled-components": "5.3.9",
+    "redux-saga": "1.2.3",
+    "react-router": "6.10.0",
+    "reselect": "4.1.7",
+    "key-mirror": "1.0.1",
+    "firebase": "9.19.1"
   },
   "scripts": {
     "start": "react-scripts start",

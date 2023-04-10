@@ -1,14 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import MainLayout from "./layouts/MainLayout";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Login from "./components&pages/LoginPage"
+import MainPage from "./components&pages/MainPage"
+import { AuthContextProvider } from './context/authContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        quizzz!
-      </header>
-    </div>
+    <div>
+      {/* <AuthContextProvider> */}
+        <Router>
+        <Routes>
+          <Route path="/" element={<MainLayout/>}>
+            <Route path="/" element={<Login/>}/>
+            <Route path="main" element={<MainPage/>}/>
+          </Route>
+        </Routes>
+        </Router>
+{/*       </AuthContextProvider>
+ */}    </div>
+  
   );
 }
 

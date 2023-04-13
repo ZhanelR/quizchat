@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 //import { useHistory } from 'react-router-dom';
 import { initialState } from "../Slices/usersSlice";
 import { GoogleButton} from "react-google-button";
-import "./LoginPage.css"
+import "./LoginPage.css";
+import { UserAuth } from '../context/authContext';
+
 
 
 function Login() {
@@ -14,7 +16,8 @@ function Login() {
     const dispatch = useDispatch();
     const userState = useSelector((state) => state.user);
     const isAuthorized = userState?.isAuthorized; // добавила проверку на undefined, так как была ошибка в консоли
-  
+    const {googleSignIn, user } = UserAuth();
+
     useEffect(() => {
       if (isAuthorized === true) {
         navigate('/main');
@@ -23,19 +26,27 @@ function Login() {
     
 
     const handleSubmit = (values) => {
-        dispatch(login({login: values.username, password: values.password}));
+        /* dispatch(login({login: values.username, password: values.password}));
         
         if (values.remember) {
           const data = { login: values.username, password: values.password };
           localStorage.setItem('loginData', JSON.stringify(data));
         } else {
           localStorage.removeItem('loginData');
+        } */
+      };
+    
+      const handleGoogleSignIn = async () => {
+        try {
+          await googleSignIn();
+        } catch (error) {
+          console.log(error);
         }
       };
 
       return (
         <div className='form-сontainer'>
-          <div className='google-button'><GoogleButton onClick={handleSubmit} /></div>
+          <div className='google-button'><GoogleButton onClick={handleGoogleSignIn}  /></div>
         </div>
       );
 }

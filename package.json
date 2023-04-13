@@ -19,7 +19,8 @@
     "redux-saga": "1.2.3",
     "reselect": "4.1.7",
     "styled-components": "5.3.9",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "antd": "5.2.2"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -11,18 +11,27 @@ const authConfig = {
     appId: "1:782456404033:web:00883db51998f976aaaec0"
 };
 
-/*   const firebaseConfig = {
+const firestoreConfig = {
+  apiKey: "AIzaSyAOC4YvgrYQ3XVCA71biVFR6a7Qo1J8mGQ",
+  authDomain: "lab3-messages.firebaseapp.com",
+  projectId: "lab3-messages",
+  storageBucket: "lab3-messages.appspot.com",
+  messagingSenderId: "1073627537939",
+  appId: "1:1073627537939:web:5ca730caf98a358ec555e6"
+}
+
+    const firebaseConfig = {
     authConfig,
-    //firestoreConfig
+    firestoreConfig
   };
- */
+
 
   const app = initializeApp(authConfig, "authFirebase");
   const db = getFirestore(app);
   const auth = getAuth(app);
   
-  //const appFirestore = initializeApp(firebaseConfig.firestoreConfig, "firestore");
-  //const dbFirestore = getFirestore(appFirestore);
+  const appFirestore = initializeApp(firebaseConfig.firestoreConfig, "firestore");
+  const dbFirestore = getFirestore(appFirestore);
   
   export { auth, db };
   

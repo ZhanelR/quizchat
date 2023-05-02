@@ -1,17 +1,27 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { fetchMessages, sendMessage } from "../store&sagas/chats/actionChat"
+import Chat from "./Chat/Chat";
+import {query, collection, onSnapshot} from "firebase/firestore";
+import { fetchMessages, sendMessage } from "../redux/actions/chat/actionChat";
+import { dbFirestore } from "../firebase";
+import {fetchMessagesSuccess} from "../redux/slices/chatSlice"
 
 function MainPage() {
   const dispatch = useDispatch();
   const messages = useSelector((state) => state.chat.messages);
   const isLoading = useSelector((state) => state.chat.isLoading);
   const error = useSelector((state) => state.chat.error);
-
+  
   useEffect(() => {
-    dispatch(fetchMessages());
-  }, [dispatch]);
+    const q = query(collection(dbFirestore, 'messages')) 
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {   
+      let messagesArr = []
+      querySnapshot.forEach((doc) => {
+        messagesArr.push({...doc.data(), id: doc.title})
+      });
+      //отсортир массив сообщ sort (timestamp)
+      dispatch(fetchMessagesSuccess(messagesArr))
+    })},[dispatch])
 
   function handleSendMessage(event) {
     event.preventDefault();
@@ -23,22 +33,7 @@ function MainPage() {
   }
 
   return (
-    <div>
-      {/* Отображение сообщений */}
-      {messages.map((message) => (
-        <div key={message.id}>
-          <div>{message.userName}</div>
-          <div>{message.text}</div>
-        </div>
-      ))}
-      {/* Форма для отправки нового сообщения */}
-      <form onSubmit={handleSendMessage}>
-        <input type="text" name="message" placeholder="Введите сообщение" />
-        <button type="submit" disabled={isLoading}>Отправить</button>
-      </form>
-      {/* Отображение ошибки */}
-      {error && <div>{error.message}</div>}
-    </div>
+   <Chat />
   );
 }
 

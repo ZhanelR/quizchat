@@ -1,7 +1,8 @@
 import React from 'react';
-import MainLayout from "./layouts/MainLayout";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import Login from "./components&pages/LoginPage"
+
+import MainLayout from "./layouts/MainLayout";
+import Login from "./components&pages/LoginPage/LoginPage"
 import MainPage from "./components&pages/MainPage"
 import { AuthContextProvider } from './context/authContext';
 

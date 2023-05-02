@@ -4,19 +4,15 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom"
 import "./Header.css"
-import { login, logout } from "../store&sagas/actionUser";
-import { UserAuth } from "../context/authContext";
-import {setLogout} from "../Slices/usersSlice"
+import { login, logout } from "../../redux/actions/user/userActions";
+import { UserAuth } from "../../context/authContext";
+import {setLogout} from "../../redux/slices/usersSlice"
 
 
 const Header = () => {
 
     const dispatch = useDispatch()
-    //const isAuthorized = useSelector((state) => state.user.isAuthorized);
-    const isAuthorized = useSelector((state) => {
-        console.log('state:', state); // добавьте эту строку
-        return state.user.isAuthorized;
-      });
+    const isAuthorized = useSelector((state) => state.user.isAuthorized);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -41,15 +37,6 @@ const Header = () => {
       console.log(error)
     }
   }
-
-    /* const {user, logOut} = userAuth();
-    const handleSignOut = async () => {
-        try {
-            await LogOut
-        } catch (error) {
-            console.log(error)
-        }
-    } */
 
   return (
     <div className="header">

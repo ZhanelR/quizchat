@@ -2,7 +2,7 @@ import { useContext, createContext, useEffect } from "react";
 import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
 import {auth} from "../firebase"
 import { useDispatch, useSelector } from "react-redux";
-import {setUser} from "../Slices/usersSlice"
+import {setUser} from "../redux/slices/usersSlice"
 
 const AuthContext = createContext();
 
@@ -23,7 +23,6 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
         if(currentUser) dispatch(setUser(currentUser));
-      console.log('User', currentUser)
     });
     return () => {
       unsubscribe();

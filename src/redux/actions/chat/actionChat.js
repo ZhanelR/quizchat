@@ -1,6 +1,4 @@
-//import * as types from './ActionTypesChat'
-
-import { chatActionTypes } from "../chats/ActionTypesChat";
+import  chatActionTypes  from "./chatActionTypes";
 
 export function fetchMessages() {
   return { type: chatActionTypes.FETCH_MESSAGES_REQUEST };

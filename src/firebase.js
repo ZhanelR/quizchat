@@ -33,5 +33,5 @@ const firestoreConfig = {
   const appFirestore = initializeApp(firebaseConfig.firestoreConfig, "firestore");
   const dbFirestore = getFirestore(appFirestore);
   
-  export { auth, db };
+  export { auth, db, dbFirestore };
   

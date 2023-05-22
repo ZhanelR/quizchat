@@ -39,10 +39,14 @@ const Header = () => {
   }
 
   return (
+    <>
+    <div className="compensateHeader"></div>
     <div className="header">
       <p className="logo">Q</p>
       <button className="header-button" onClick={handleSignOut}>Log out</button>
     </div>
+    </>
+    
   )
 }
 

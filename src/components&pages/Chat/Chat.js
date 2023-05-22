@@ -9,7 +9,7 @@ function Chat() {
   const messages = useSelector((state) => state.chat.messages);
 
   // сортировка сообщений по времени создания
-  const sortedMessages = messages.slice().sort((a, b) => a.createdAt - b.createdAt);
+  //const sortedMessages = messages.slice().sort((a, b) => a.createdAt - b.createdAt);
 
   function scrollToBottom() {
     const chatContainer = document.getElementById("chat-container");
@@ -28,7 +28,7 @@ function Chat() {
       </div>
       <div className="chat-messages">
         <ul className="chat-list">
-          {sortedMessages.map((message) => (
+          {messages.map((message) => (
             <li key={message.id} className="chat-message">
               <img
                 className="user-avatar"

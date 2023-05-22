@@ -1,3 +1,7 @@
+.compensateHeader {
+  height: 73px;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -6,6 +10,7 @@
     padding: 10px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
+    height: 73px;
     top: 0;
     left: 0;
     right: 0;

@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 import MainLayout from "./layouts/MainLayout";
 import Login from "./components&pages/LoginPage/LoginPage"
-import MainPage from "./components&pages/MainPage"
+import MainPage from "./components&pages/MainPage/MainPage"
 import { AuthContextProvider } from './context/authContext';
 
 function App() {
